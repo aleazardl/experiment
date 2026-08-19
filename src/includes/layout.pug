@@ -1,0 +1,82 @@
+//- START - Declare default value vars here
+block variables
+- site_title = 'UPWARD NEXT Boilerplate'
+
+if(page_title)
+  - title=page_title + '｜' + site_title
+else
+  - title=site_title
+//- END - Declare default value vars here
+
+//- --START-- HTML codes begins here //
+doctype html
+html(lang="ja")
+  head
+    //- --START-- metatags //
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=11")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=yes")
+
+    if page_metatags
+      each item in page_metatags
+        meta(name=item['name'], content=item['content'])
+    meta(name="og:type", content="website")
+    
+    title=title
+    //- --END-- metatags //
+
+    //- --START-- Stylesheets CDNs //
+    block cdn_css
+    //- --START-- Stylesheets CDNs //
+    
+    //- --START-- Global Stylesheets //
+    link(rel="stylesheet", href="css/main.css")
+    //- --END-- Global Stylesheets //
+
+    //- --START-- Page Specific Stylesheets //
+    block customize_css
+    //- --END-- Page Specific Stylesheets //
+
+  body
+    header
+      //- Before the header content
+      block before_header
+
+      //- Include global header based files here
+      
+      //- After the header content
+      block after_header
+
+    main
+      //- Before the page content
+      block before_content 
+
+      //- Page content will appear here
+      block content
+
+      //- After the page content
+      block after_content
+    
+    footer
+      //- Before the footer content
+      block before_footer
+
+      //- Include global footer based files here
+
+      //- After the footer content
+      block after_footer
+    
+
+    //- --START-- CDN Scripts //
+    script(src="https://cdn.rawgit.com/scottjehl/picturefill/3.0.2/dist/picturefill.min.js", defer)
+    script(src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js", defer)
+    script(src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js", defer)
+    block cdn_scripts
+    //- --END-- Scripts //
+
+    //- --START-- Default scripts
+    script(src="js/common/index.js", defer)
+    block customize_script
+    //- --END-- Default scripts
+
+//- --END-- HTML codes begins here //

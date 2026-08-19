@@ -1,0 +1,11 @@
+### Base Compose File
+services:
+  wordpress:
+    container_name: ${PROJECT_NAME:-project}_wordpress
+    restart: unless-stopped
+    build:
+      context: .
+      args:
+        - name=${PROJECT_NAME}
+    ports:
+      - 8000:80

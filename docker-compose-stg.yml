@@ -1,0 +1,40 @@
+##----------------------------##
+### Development Compose File ###
+##----------------------------##
+
+# Define volumes
+volumes:
+  wordpress:
+
+# Define networks for services to use
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  # Wordpress additional parameters for dev
+  wordpress:
+    container_name: STG_${PROJECT_NAME:-project}_wordpress
+    environment:
+      - PHP_ENABLE_OPCACHE=no
+      - WORDPRESS_DB_HOST=${STG_MYSQL_HOST}
+      - WORDPRESS_DB_NAME=${STG_MYSQL_DATABASE}
+      - WORDPRESS_DB_USER=${STG_MYSQL_USER}
+      - WORDPRESS_DB_PASSWORD=${STG_MYSQL_PASSWORD}
+      - WORDPRESS_DEBUG=${WORDPRESS_DEBUG:-0}
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - app-network
+  
+  # PHPMyAdmin service
+  phpmyadmin:
+    image: phpmyadmin:${PHPMYADMIN_VERSION:-latest}
+    container_name: STG_${PROJECT_NAME:-db}_phpmyadmin
+    ports:
+      - 8090:80
+    networks:
+      - app-network
+    environment:
+      - UPLOAD_LIMIT=1G
+      - PMA_HOST=${STG_MYSQL_HOST}:3307

@@ -1,0 +1,23 @@
+@use '../settings/screen-sizes' as sz;
+
+@function getsp($val) {
+  $result: calc(330 / 750) * $val;
+  @return $result;
+}
+
+@function getsp375($val) {
+  $result: calc(375 / 750) * $val;
+  @return $result;
+}
+
+@function getvwpc($base-size) {
+  @return calc( ($base-size / sz.$pc-design) * 100 ) * 1vw;
+}
+
+@function getvwsp($base-size) {
+  @return calc( ($base-size / sz.$pc-design) * 100 ) * 1vw;
+}
+
+@function getem($base-size, $illust-lheight) {
+  @return calc($illust-lheight / $base-size) * 1em;
+}

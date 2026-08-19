@@ -1,0 +1,9 @@
+@use 'settings/color' as color;
+@use 'settings/font-family' as font-family;
+
+html {
+  font-family: font-family.$yugo;
+  font-size: 10px;
+  color: color.$text;
+  scroll-behavior: smooth;
+}

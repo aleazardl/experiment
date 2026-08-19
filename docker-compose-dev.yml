@@ -1,0 +1,103 @@
+##----------------------------##
+### Development Compose File ###
+##----------------------------##
+
+services:
+  # Database to use
+  db:
+    image: mysql:${MYSQL_VERSION:-latest}
+    container_name: ${PROJECT_NAME:-mysql}_database
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Wordpress additional parameters for dev
+  wordpress:
+    build:
+      dockerfile: Dockerfile
+      args:
+        PROJECT_NAME: ${PROJECT_NAME}
+    depends_on:
+      - db
+    environment:
+      - PHP_ENABLE_OPCACHE=no
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - WORDPRESS_DB_NAME=${MYSQL_DATABASE}
+      - WORDPRESS_DEBUG=${WORDPRESS_DEBUG:-1}
+      - WORDPRESS_LOCALE=${WORDPRESS_LOCALE}
+      - WORDPRESS_TITLE=${WORDPRESS_TITLE}
+      - WORDPRESS_USERNAME=${WORDPRESS_USERNAME}
+      - WORDPRESS_PASSWORD=${WORDPRESS_PASSWORD}
+      - WORDPRESS_EMAIL=${WORDPRESS_EMAIL}
+    volumes:
+      - wordpress:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+      - ./dist:/var/www/html/wp-content/themes/${PROJECT_NAME}
+      - ./wordpress.ini:/usr/local/etc/php/conf.d/wordpress.ini 
+    networks:
+      - app-network
+  
+  # PHPMyAdmin service
+  phpmyadmin:
+    image: phpmyadmin:${PHPMYADMIN_VERSION:-latest}
+    container_name: ${PROJECT_NAME:-db}_phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - 8090:80
+    networks:
+      - app-network
+    environment:
+      - UPLOAD_LIMIT=1G
+      - PMA_HOST=db
+  
+  # WPCLI
+  wordpress-cli:
+    working_dir: /var/www/html
+    image: wordpress:cli
+    stdin_open: true
+    tty: true
+    env_file: .env
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - WORDPRESS_DB_NAME=${MYSQL_DATABASE}
+      - WORDPRESS_DEBUG=${WORDPRESS_DEBUG:-0}
+    depends_on:
+      db:
+        condition: service_healthy
+    user: xfs
+    privileged: true
+    command: >
+      /bin/sh -c '
+      wp core install --path="/var/www/html" --url="http://localhost:8000" --title=$WORDPRESS_TITLE --admin_user=$WORDPRESS_USERNAME --admin_password=$WORDPRESS_PASSWORD --admin_email=$WORDPRESS_EMAIL --locale=$WORDPRESS_LOCALE --allow-root;
+      wp theme activate ${PROJECT_NAME}
+      '
+    volumes:
+      - wordpress:/var/www/html
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-network
+
+# Define volumes
+volumes:
+  dbdata:
+  wordpress:
+
+# Define networks for services to use
+networks:
+  app-network:
+    driver: bridge
