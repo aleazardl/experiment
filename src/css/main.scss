@@ -5,8 +5,13 @@
 // Components
 // // Common
 @use 'components/common/image.scss';
+@use 'components/common/header.scss';
+@use 'components/common/header-logo.scss';
+@use 'components/common/footer.scss';
 
 // // Page
+@use 'components/pages/me.scss';
 
 // Trumps
 @use 'trumps/helper';
+@use 'trumps/keyframes';

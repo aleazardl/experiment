@@ -1,0 +1,76 @@
+@use 'settings/color' as c;
+@use 'settings/font-family' as ff;
+@use 'settings/font-weight' as fw;
+@use 'tools/media-queries' as mq;
+@use 'tools/function' as fn;
+
+.footer {
+  position: fixed;
+  width: 100%;
+  height: 39vh;
+  display: flex;
+  align-items: flex-end;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100vh);
+  z-index: -1;
+
+  &__bg {
+    position: absolute;
+  }
+
+  &__wrapper {
+    width: 100%;
+    padding: 37px 3%;
+  }
+
+  &__txt {
+    margin-bottom: 37px;
+    font: fw.$bold 11rem ff.$outfit;
+    font-size: fn.getfluidcustom(37, 111, 320, 1920);
+    text-align: center;
+    white-space: nowrap;
+    transition: 0.3s ease;
+  }
+
+  &__ctc-links {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__ctc-gr {
+    &.s2c {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__ctc-item {
+    display: block;
+    font: fw.$medium 2rem ff.$outfit;
+    @include mq.max(1024px) {
+      font-size: 1.8rem;
+    }
+
+    // &:not(:last-child) {
+    //   margin-bottom: 7px;
+    // }
+  }
+
+  &__cpr {
+    font: fw.$regular 1.8rem ff.$outfit;
+    color: c.$white;
+    text-align: center;
+    filter: brightness(0.5);
+    @include mq.max(1024px) {
+      font-size: 1.57rem;
+    }
+    @include mq.sp {
+      margin-top: 15px;
+    }
+  }
+}

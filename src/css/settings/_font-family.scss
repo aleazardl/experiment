@@ -1,1 +1,26 @@
+@font-face {
+  font-family: SVBasicManual;
+  src: url('/public/font/SVBasicManual.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SVBasicManual-Bold;
+  src: url('/public/font/SVBasicManual-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SuperRichExpanded;
+  src: url('/public/font/SuperRichExpanded.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 $yugo: '游ゴシック', 'Yu Gothic', '游ゴシック体', 'YuGothic', sans-serif;
+$svbasic: 'SVBasicManual', 'SVBasicManual-Bold', sans-serif;
+$suparich: 'SuperRichExpanded', serif;
+$robototo: 'Roboto Flex', sans-serif;
+$outfit: 'Outfit', sans-serif;

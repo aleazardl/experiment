@@ -1,0 +1,7 @@
+@keyframes breath {
+  to {
+    transform: translate(-50%, -50%) scale(0.7);
+    filter: blur(150px);
+    opacity: 0;
+  }
+}
