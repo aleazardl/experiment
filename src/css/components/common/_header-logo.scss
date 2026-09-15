@@ -1,0 +1,67 @@
+@use 'settings/color' as c;
+@use 'settings/font-family' as ff;
+@use 'settings/font-weight' as fw;
+@use 'tools/media-queries' as mq;
+
+.header-logo {
+  position: fixed;
+  height: 80px;
+  width: 50%;
+  padding: 18px 30px;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 9999999;
+  transition: 0.3s ease;
+  @include mq.max(980px) {
+    min-height: 80px;
+    padding: 10px 20px;
+  }
+  @include mq.sp {
+    height: 50px;
+    min-height: 50px;
+    padding: 11px;
+  }
+
+  &__this {
+    position: relative;
+    width: 111px;
+    height: 100%;
+    z-index: 2;
+    opacity: 1;
+    filter: invert(1) blur(0);
+    @include mq.max(1200px) {
+      width: 100px;
+    }
+    @include mq.sp {
+      width: 80px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 110%;
+      background-color: #777;
+      opacity: 0;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: invert(1) blur(27px);
+    }
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      filter: invert(1) drop-shadow(0 0 7px #7777775d);
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+}

@@ -3,10 +3,130 @@ block variables
   - page_title = 'TOP'
   - 
     var page_metatags = [
-      {name: 'description', content: 'Top Page'}, 
+      {name: 'description', content: 'A personal portfolio by ZAR, a front-end web developer passionate about code and design, combining both into creative digital experiences.'}, 
     ]
 
 block content
-  |TESTING
+  .me.js-page
+    canvas.me-overlay.js-glass
+    canvas.me-box.js-3d
+    section.me-mv.js-mv
+      .me-mv__space-main
+        .me-mv__space.js-spaces
+        .me-mv__space-sub
+        img.js-main-img.tabp(src="/public/imgs/zar-rr.svg", alt="main")
+        img.js-main-img.tabs(src="/public/imgs/zar-rr-sp.svg", alt="main")
+      .me-mv__main.js-start
+        .me-mv__main-item.js-main-i
+          .me-mv__main-item-c1
+          .me-mv__main-item-c2.s2
+        .me-mv__main-item.me-mv__main-item--s2.js-main-i
+          .me-mv__main-item-c1.s2
+          .me-mv__main-item-c2.s2
+        .me-mv__main-item.me-mv__main-item--s3.js-main-i
+          .me-mv__main-item-c1 
+          .me-mv__main-item-c2
+            img(src="/public/imgs/portfolio.svg", alt="porftext")
+    section.me-about.js-about
+      .me-about__bgt
+      //- .me-about__title.js-about-title
+      //-   img(src="/public/imgs/about.svg", alt="")
+      .me-about__wrapper
+        .me-about__content
+          .me-about__txts.js-about-txts
+            p.me-about__txts-p.js-about-p Hello there, Welcome to my site! 
+              | My name is 
+              span.emph.js-emph ZAR
+              | . #[br] 
+              | I'm a 
+              span.emph.js-emph Web Developer
+              | . #[br]
+              |  mostly focused on 
+              span.emph.js-emph Front-End
+              |  development.
+              | Animations, Interactivity, UI/UX, you name it, 
+              span.emph.js-emph.js-emph-last I live to give it life.
+      .me-about__stack-main.js-stack-main
+        .me-about__stack.js-about-stack
+          .me-about__stack-gr.js-about-stack-gr
+            .splide.js-slider
+              .splide__track
+                .splide__list.js-slider-list
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/html5.svg", alt="html")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/css.svg", alt="css")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/sass.svg", alt="sass")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/js.svg", alt="js")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/typescript.svg", alt="ts")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/react.svg", alt="react")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/php.svg", alt="php")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/sql.svg", alt="sql")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/wordpress.svg", alt="wp")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/git.svg", alt="git")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/docker.svg", alt="docker")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/nodejs.svg", alt="node")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/npm.svg", alt="npm")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/pug.svg", alt="pug")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/gsap.svg", alt="gsap")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/photoshop.svg", alt="ps")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/adobei.svg", alt="aill")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/adobexd.svg", alt="xd")
+                  .splide__slide.me-about__stack-item
+                    img(src="/public/imgs/stack/figma.svg", alt="figma") 
+    section.me-works.js-works
+      .me-works__wrapper
+        .me-works__content
+          .me-works__slider.js-works-slider
+            .splide.js-slider-2
+              .splide__track
+                .splide__list.js-slider-list
+                  a.me-works__item.splide__slide(href="https://seikyusyu.or.jp/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/seikyusyu-main.jpg", alt="seikyusyu")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/seikyusyubh.jpg", alt="seikyusyubh")
+                  a.me-works__item.splide__slide(href="https://enko-gh.co.jp/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/enko-main.jpg", alt="enko")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/enkobh.webp", alt="enkobh")
+                  a.me-works__item.splide__slide(href="https://aictest02.xsrv.jp/tws/data/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/tws-main.jpg", alt="tws")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/twsbh.webp", alt="twsbh")
+                  a.me-works__item.splide__slide(href="https://emtechs.co.jp/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/emtech-main.jpg", alt="emtech")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/emtechbh.jpg", alt="emtechbh")
+                  a.me-works__item.splide__slide(href="https://www.arkdent.com/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/arkdent-main.png", alt="arkdent")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/arkdentbh.png", alt="arkdentbh")
+                  a.me-works__item.splide__slide(href="https://www.nikkeikanzai.co.jp/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/nikkei-main.png", alt="nikkei")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/nikkeibh.png", alt="nikkeibh")
+                  a.me-works__item.splide__slide(href="https://jyonan.info/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/jonan-main.jpg", alt="jonan")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/jonanbh.png", alt="jonanbh")
+                  a.me-works__item.splide__slide(href="https://www.interiorspace-zero.co.jp/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/zero-main.jpg", alt="zero")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/zerobh.jpg", alt="zerobh")
+                  a.me-works__item.splide__slide(href="https://nishifuna-chiro.com/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/nishi-main.png", alt="nishi")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/nishibh.png", alt="nishibh")
+                  a.me-works__item.splide__slide(href="https://yomitoru.biz/" target="_blank")
+                    img.me-works__imgmain.js-works-img(src="/public/imgs/works/yomi-main.jpg", alt="yomi")
+                    img.me-works__img2.js-works-img2(src="/public/imgs/works/yomibh.jpg", alt="yomibh")
+    section.me-outro.js-outro
 block customize_script
   script(src="js/top/index.js")

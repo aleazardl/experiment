@@ -21,3 +21,7 @@
 @function getem($base-size, $illust-lheight) {
   @return calc($illust-lheight / $base-size) * 1em;
 }
+
+@function getfluidcustom($min-size, $max-size, $min-vw, $max-vw) { // Function for fluid sizes (custom vw)
+  @return calc(#{$min-size}px + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-vw}px) / (#{$max-vw} - #{$min-vw})));
+}

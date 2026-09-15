@@ -1,16 +1,16 @@
 //- START - Declare default value vars here
 block variables
-- site_title = 'UPWARD NEXT Boilerplate'
+- site_title = 'johnaleazardeleon'
 
 if(page_title)
-  - title=page_title + '｜' + site_title
+  - title=site_title
 else
   - title=site_title
 //- END - Declare default value vars here
 
 //- --START-- HTML codes begins here //
 doctype html
-html(lang="ja")
+html(lang="en")
   head
     //- --START-- metatags //
     meta(charset="utf-8")
@@ -21,13 +21,17 @@ html(lang="ja")
       each item in page_metatags
         meta(name=item['name'], content=item['content'])
     meta(name="og:type", content="website")
-    
+
     title=title
     //- --END-- metatags //
 
     //- --START-- Stylesheets CDNs //
     block cdn_css
-    //- --START-- Stylesheets CDNs //
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,87.5,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet")
+    link(href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet")
+    //- --END-- Stylesheets CDNs //
     
     //- --START-- Global Stylesheets //
     link(rel="stylesheet", href="css/main.css")
@@ -38,11 +42,12 @@ html(lang="ja")
     //- --END-- Page Specific Stylesheets //
 
   body
-    header
+    header.header.js-header
       //- Before the header content
       block before_header
 
       //- Include global header based files here
+      include header
       
       //- After the header content
       block after_header
@@ -50,6 +55,7 @@ html(lang="ja")
     main
       //- Before the page content
       block before_content 
+        include header-logo
 
       //- Page content will appear here
       block content
@@ -57,11 +63,12 @@ html(lang="ja")
       //- After the page content
       block after_content
     
-    footer
+    footer.footer.js-footer
       //- Before the footer content
       block before_footer
 
       //- Include global footer based files here
+      include footer
 
       //- After the footer content
       block after_footer
@@ -72,6 +79,13 @@ html(lang="ja")
     script(src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js", defer)
     script(src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js", defer)
     block cdn_scripts
+      script(src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest")
+      script(src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js", defer)
+      script(src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js", defer)
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js")
+      script(src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js", defer)
+      script(src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js")
+      script(src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js")
     //- --END-- Scripts //
 
     //- --START-- Default scripts

@@ -11,9 +11,26 @@
   }
 }
 
+.tabp {
+  @include mq.max(980px) {
+    display: none;
+  }
+}
+
+.tabs {
+  display: none;
+  @include mq.max(980px) {
+    display: block;
+  }
+}
+
 .sp {
   display: none;
   @include mq.sp {
     display: block;
   }
+}
+
+.end {
+  text-align: end;
 }

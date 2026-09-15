@@ -47,12 +47,11 @@
     "gulp-stylelint": "^13.0.0",
     "gulp-terser": "^2.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "node-sass": "^9.0.0",
     "postcss": "^8.4.21",
     "postcss-scss": "^4.0.6",
     "pre-commit": "^1.2.2",
     "pug": "^3.0.2",
-    "sass": "^1.58.3",
+    "sass": "^1.102.0",
     "stylelint": "^14.0.0",
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-standard": "^29.0.0",
@@ -65,5 +64,8 @@
   },
   "precommit": {
     "run": "build"
+  },
+  "dependencies": {
+    "three": "^0.185.1"
   }
 }
